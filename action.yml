@@ -1,0 +1,13 @@
+name: "Set up minikube"
+description: "Install minikube in GitHub Actions"
+author: "sagikazarmark"
+branding:
+  color: blue
+  icon: box
+inputs:
+  version:
+    description: "The minikube version to use"
+    default: latest
+runs:
+  using: "node12"
+  main: "main.js"

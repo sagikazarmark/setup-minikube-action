@@ -7,12 +7,24 @@ on:
   pull_request:
 
 jobs:
-  test:
-    name: Test
+  latest:
+    name: Latest
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+      - name: Check that minikube is available
+        run: |
+          minikube version
+
+  version:
+    name: Specific version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          version: v1.23.0
       - name: Check that minikube is available
         run: |
           minikube version

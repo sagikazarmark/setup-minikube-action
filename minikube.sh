@@ -75,7 +75,12 @@ install_minikube() {
 
     mkdir -p "$minikube_dir"
 
-    curl -sSLo "$minikube_dir/minikube" "https://github.com/kubernetes/minikube/releases/download/$version/minikube-$os-amd64"
+    if [[ "$version" == "latest" ]]; then
+        curl -sSLo "$minikube_dir/minikube" "https://github.com/kubernetes/minikube/releases/latest/download/minikube-$os-amd64"
+    else
+        curl -sSLo "$minikube_dir/minikube" "https://github.com/kubernetes/minikube/releases/download/$version/minikube-$os-amd64"
+    fi
+
     chmod +x "$minikube_dir/minikube"
 }
 
